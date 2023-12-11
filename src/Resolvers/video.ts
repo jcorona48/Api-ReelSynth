@@ -1,11 +1,11 @@
-import Video from "../Models/Video";
-import { filter } from "../helpers/Filter";
-import User from "../Models/User";
-import { verifyAdmin } from "../utils/auth";
-import { verifyToken } from "../utils/Token";
-import { getModel } from "../helpers/models";
-import Host from "../Models/Host";
-import { ContextInput } from "../Types/Context";
+import Video from "../Models/Video.js";
+import { filter } from "../helpers/Filter.js";
+import User from "../Models/User.js";
+import { verifyAdmin } from "../utils/auth.js";
+import { verifyToken } from "../utils/Token.js";
+import { getModel } from "../helpers/models.js";
+import Host from "../Models/Host.js";
+import { ContextInput } from "../Types/Context.js";
 
 interface VideoInput {
     name: string;
@@ -132,7 +132,7 @@ const deleteVideo = async (_: any, { id }: Video, { token }: ContextInput) => {
             })
             .populate("host");
         if (!video) throw new Error("No se ha encontrado el Video");
-        video.status = "DELETED";
+        video.status = "DELETED.js";
         return video;
     } catch (error) {
         console.log(error);

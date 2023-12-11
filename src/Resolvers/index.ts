@@ -1,20 +1,20 @@
 import { mergeResolvers } from "@graphql-tools/merge";
-import { roleResolvers } from "./role";
-import { userResolvers } from "./user";
-import { movieResolvers } from "./movie";
-import { genrerResolvers } from "./genrer";	
-import { studioResolvers } from "./studio";
-import { producerResolvers } from "./producer";
-import { serieResolvers } from "./serie";
-import { episodeResolvers } from "./episode";
-import { seasonResolvers } from "./season";
-import { hostResolvers } from "./host";
-import { countryResolvers } from "./country";
-import { commentResolvers } from "./comment";
-import { likeResolvers } from "./like";
-import { rateResolvers } from "./rate";
-import { videoResolvers } from "./video";
-import { companyResolvers } from "./company";
+import { roleResolvers } from "./role.js";
+import { userResolvers } from "./user.js";
+import { movieResolvers } from "./movie.js";
+import { genrerResolvers } from "./genrer.js";	
+import { studioResolvers } from "./studio.js";
+import { producerResolvers } from "./producer.js";
+import { serieResolvers } from "./serie.js";
+import { episodeResolvers } from "./episode.js";
+import { seasonResolvers } from "./season.js";
+import { hostResolvers } from "./host.js";
+import { countryResolvers } from "./country.js";
+import { commentResolvers } from "./comment.js";
+import { likeResolvers } from "./like.js";
+import { rateResolvers } from "./rate.js";
+import { videoResolvers } from "./video.js";
+import { companyResolvers } from "./company.js";
 // Unimos todos los resolvers
 const resolvers = mergeResolvers([ 
     roleResolvers, 

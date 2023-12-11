@@ -1,9 +1,9 @@
-import Serie from "../Models/Serie";
-import { verifyToken } from "../utils/Token";
-import { verifyAdmin } from "../utils/auth";
-import { filter } from "../helpers/Filter";
-import { SerieType } from "../Types/Serie";
-import { ContextInput } from "../Types/Context";
+import Serie from "../Models/Serie.js";
+import { verifyToken } from "../utils/Token.js";
+import { verifyAdmin } from "../utils/auth.js";
+import { filter } from "../helpers/Filter.js";
+import { SerieType } from "../Types/Serie.js";
+import { ContextInput } from "../Types/Context.js";
 
 interface SerieInput {
     id: string;

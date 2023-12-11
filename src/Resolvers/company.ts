@@ -1,7 +1,7 @@
-import Company from "../Models/Company";
-import { verifyToken } from "../utils/Token";
-import { verifyAdmin } from "../utils/auth";
-import { filter } from "../helpers/Filter";
+import Company from "../Models/Company.js";
+import { verifyToken } from "../utils/Token.js";
+import { verifyAdmin } from "../utils/auth.js";
+import { filter } from "../helpers/Filter.js";
 
 import { ContextInput } from "../Types/Context";
 

@@ -1,8 +1,8 @@
-import sendEmail from "../emailer";
-import Like from "../Models/Like";
-import { filter } from "./Filter";
-import { htmlSerieUpdated, htmlTemporada } from "../Mail/index";
-import { LikeType } from "../Types/Like";
+import sendEmail from "../emailer.js";
+import Like from "../Models/Like.js";
+import { filter } from "./Filter.js";
+import { htmlSerieUpdated, htmlTemporada } from "../Mail/index.js";
+import { LikeType } from "../Types/Like.js";
 
 export const SendEmailFollowers = async (input: Object) => {
     const query = filter(input);

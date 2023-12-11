@@ -1,11 +1,11 @@
 import { ApolloServer } from "apollo-server-express";
 import express from "express";
-import { PORT } from "./config";
-import typeDefs from "./Schemas/index";
-import resolvers from "./Resolvers/index";
-import CuevanaScrapingPuppeteer from "./utils/Scraping/Cuevana-puppeteer";
+import { PORT } from "./config.js";
+import typeDefs from "./Schemas/index.js";
+import resolvers from "./Resolvers/index.js";
+import CuevanaScrapingPuppeteer from "./utils/Scraping/Cuevana-puppeteer.js";
 import morgan from "morgan";
-import { connectDB } from "./db";
+import { connectDB } from "./db.js";
 
 const app = express();
 

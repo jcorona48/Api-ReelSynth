@@ -1,10 +1,10 @@
-import Rate from "../Models/Rate";
-import { filter } from "../helpers/Filter";
-import User from "../Models/User";
-import { verifyToken } from "../utils/Token";
-import { getModel } from "../helpers/models";
-import { RateType } from "../Types/Rate";
-import { ContextInput } from "../Types/Context";
+import Rate from "../Models/Rate.js";
+import { filter } from "../helpers/Filter.js";
+import User from "../Models/User.js";
+import { verifyToken } from "../utils/Token.js";
+import { getModel } from "../helpers/models.js";
+import { RateType } from "../Types/Rate.js";
+import { ContextInput } from "../Types/Context.js";
 
 interface RateInput {
     id: string;
@@ -109,7 +109,7 @@ const updateRate = async (
 
     const rateDiff = rate - rated.rate;
     rated.rate = rate;
-    rated.status = "EDITED";
+    rated.status = "EDITED.js";
     await rated.save();
 
     const entity = await (getModel(rated.entityType) as any).findById(
@@ -155,7 +155,7 @@ const deleteRate = async (
                 },
             });
         if (!rate) throw new Error("No se ha encontrado el Rate");
-        rate.status = "DELETED";
+        rate.status = "DELETED.js";
         updateCounter(rate);
         return rate;
     } catch (error) {

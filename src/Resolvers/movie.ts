@@ -1,10 +1,10 @@
-import Movie from "../Models/Movie";
-import { verifyToken } from "../utils/Token";
-import { verifyAdmin } from "../utils/auth";
-import { filter } from "../helpers/Filter";
+import Movie from "../Models/Movie.js";
+import { verifyToken } from "../utils/Token.js";
+import { verifyAdmin } from "../utils/auth.js";
+import { filter } from "../helpers/Filter.js";
 
-import { ContextInput } from "../Types/Context";
-import { MovieType } from "../Types/Movie";
+import { ContextInput } from "../Types/Context.js";
+import { MovieType } from "../Types/Movie.js";
 
 interface MovieInput {
     id: string;

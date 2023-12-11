@@ -1,8 +1,8 @@
-import Role from "../Models/Role";
-import { RoleType } from "../Types/Role";
-import { filter } from "../helpers/Filter";
-import { verifyToken } from "../utils/Token";
-import { verifyAdmin } from "../utils/auth";
+import Role from "../Models/Role.js";
+import { RoleType } from "../Types/Role.js";
+import { filter } from "../helpers/Filter.js";
+import { verifyToken } from "../utils/Token.js";
+import { verifyAdmin } from "../utils/auth.js";
 
 interface IRoleInput {
     name: string;

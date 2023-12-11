@@ -1,9 +1,9 @@
-import Studio from "../Models/Studio";
-import { verifyToken } from "../utils/Token";
-import { verifyAdmin } from "../utils/auth";
-import { filter } from "../helpers/Filter";
-import { StudioType } from "../Types/Studio";
-import { ContextInput } from "../Types/Context";
+import Studio from "../Models/Studio.js";
+import { verifyToken } from "../utils/Token.js";
+import { verifyAdmin } from "../utils/auth.js";
+import { filter } from "../helpers/Filter.js";
+import { StudioType } from "../Types/Studio.js";
+import { ContextInput } from "../Types/Context.js";
 
 interface StudioInput {
     id: string;

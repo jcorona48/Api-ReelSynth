@@ -1,7 +1,7 @@
-import Country from "../Models/Country";
-import { filter } from "../helpers/Filter";
-import { verifyAdmin } from "../utils/auth";
-import { verifyToken } from "../utils/Token";
+import Country from "../Models/Country.js";
+import { filter } from "../helpers/Filter.js";
+import { verifyAdmin } from "../utils/auth.js";
+import { verifyToken } from "../utils/Token.js";
 import { ContextInput } from "../Types/Context";
 import { CountryType } from "../Types/Country";
 

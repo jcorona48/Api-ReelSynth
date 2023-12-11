@@ -1,11 +1,11 @@
-import Season from "../Models/Season";
-import Serie from "../Models/Serie";
-import { verifyToken } from "../utils/Token";
-import { verifyAdmin } from "../utils/auth";
-import { filter } from "../helpers/Filter";
-import { SendEmailFollowers } from "../helpers/SendEmailFollowers";
-import { ContextInput } from "../Types/Context";
-import { SeasonType } from "../Types/Season";
+import Season from "../Models/Season.js";
+import Serie from "../Models/Serie.js";
+import { verifyToken } from "../utils/Token.js";
+import { verifyAdmin } from "../utils/auth.js";
+import { filter } from "../helpers/Filter.js";
+import { SendEmailFollowers } from "../helpers/SendEmailFollowers.js";
+import { ContextInput } from "../Types/Context.js";
+import { SeasonType } from "../Types/Season.js";
 
 interface SeasonInput {
     id: string;

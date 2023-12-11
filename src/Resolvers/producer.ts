@@ -1,9 +1,9 @@
-import Producer from "../Models/Producer";
-import { verifyToken } from "../utils/Token";
-import { verifyAdmin } from "../utils/auth";
-import { filter } from "../helpers/Filter";
-import { ProducerType } from "../Types/Producer";
-import { ContextInput } from "../Types/Context";
+import Producer from "../Models/Producer.js";
+import { verifyToken } from "../utils/Token.js";
+import { verifyAdmin } from "../utils/auth.js";
+import { filter } from "../helpers/Filter.js";
+import { ProducerType } from "../Types/Producer.js";
+import { ContextInput } from "../Types/Context.js";
 
 interface ProducerInput {
     id: string;

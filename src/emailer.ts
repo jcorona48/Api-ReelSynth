@@ -5,7 +5,7 @@ import {
     CLIENT_SECRET,
     REFRESH_TOKEN,
     REDIRECT_URI,
-} from "./config";
+} from "./config.js";
 
 const oAuth2Client = new google.auth.OAuth2(
     CLIENT_ID,

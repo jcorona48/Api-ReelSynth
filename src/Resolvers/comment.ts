@@ -1,9 +1,9 @@
-import Comment from "../Models/Comment";
-import User from "../Models/User";
-import { filter } from "../helpers/Filter";
-import { verifyAdmin } from "../utils/auth";
-import { verifyToken } from "../utils/Token";
-import { getModel } from "../helpers/models";
+import Comment from "../Models/Comment.js";
+import User from "../Models/User.js";
+import { filter } from "../helpers/Filter.js";
+import { verifyAdmin } from "../utils/auth.js";
+import { verifyToken } from "../utils/Token.js";
+import { getModel } from "../helpers/models.js";
 import { ContextInput } from "../Types/Context";
 import { CommentType } from "../Types/Comment";
 

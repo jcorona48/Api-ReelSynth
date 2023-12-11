@@ -1,11 +1,11 @@
-import { filter } from "../helpers/Filter";
-import User, { IUser } from "../Models/User";
-import { createToken, verifyToken } from "../utils/Token";
-import { verifyAdmin } from "../utils/auth";
-import Role from "../Models/Role";
-import sendEmail from "../emailer";
-import { htmlWelcome } from "../Mail/index";
-import { UserType } from "../Types/User";
+import { filter } from "../helpers/Filter.js";
+import User, { IUser } from "../Models/User.js";
+import { createToken, verifyToken } from "../utils/Token.js";
+import { verifyAdmin } from "../utils/auth.js";
+import Role from "../Models/Role.js";
+import sendEmail from "../emailer.js";
+import { htmlWelcome } from "../Mail/index.js";
+import { UserType } from "../Types/User.js";
 // Querys
 const getUsers = async (_: any, { input }: { input: Object }) => {
     const query = filter(input);

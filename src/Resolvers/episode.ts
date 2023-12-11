@@ -1,11 +1,11 @@
-import Episode from "../Models/Episode";
-import { filter } from "../helpers/Filter";
-import { verifyToken } from "../utils/Token";
-import { verifyAdmin } from "../utils/auth";
-import Season from "../Models/Season";
-import { SendEmailFollowersEpisode } from "../helpers/SendEmailFollowers";
-import { ContextInput } from "../Types/Context";
-import { EpisodeType } from "../Types/Episode";
+import Episode from "../Models/Episode.js";
+import { filter } from "../helpers/Filter.js";
+import { verifyToken } from "../utils/Token.js";
+import { verifyAdmin } from "../utils/auth.js";
+import Season from "../Models/Season.js";
+import { SendEmailFollowersEpisode } from "../helpers/SendEmailFollowers.js";
+import { ContextInput } from "../Types/Context.js";
+import { EpisodeType } from "../Types/Episode.js";
 
 interface EpisodeInput {
     id: string;
