@@ -1,9 +1,9 @@
-import Host from "../Models/Host.js";
-import { verifyToken } from "../utils/Token.js";
-import { verifyAdmin } from "../utils/auth.js";
-import { HostType } from "../Types/Host.js";
-import { ContextInput } from "../Types/Context.js";
-import { filter } from "../helpers/Filter.js";
+import Host from "../../Models/Host.js";
+import { verifyToken } from "../../utils/Token.js";
+import { verifyAdmin } from "../../utils/auth.js";
+import { HostType } from "../../Types/Host.js";
+import { ContextInput } from "../../Types/Context.js";
+import { filter } from "../../helpers/Filter.js";
 
 interface HostInput {
     id: string;

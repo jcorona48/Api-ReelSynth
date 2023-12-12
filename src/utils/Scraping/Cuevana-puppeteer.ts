@@ -1,10 +1,12 @@
 import puppeteer from "puppeteer";
 
 const CuevanaScrapingPuppeteer = async (url: string) => {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+        headless: true
+    });
     const page = await browser.newPage();
 
-    await page.goto(url, { waitUntil: "domcontentloaded" });
+    await page.goto(url, { waitUntil: "domcontentloaded"});
 
     // Esperar 1 segundo antes de continuar
     // Esperar a que el elemento h1 exista

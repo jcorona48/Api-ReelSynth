@@ -1,8 +1,8 @@
-import Genrer from "../Models/Genrer.js";
-import { verifyToken } from "../utils/Token.js";
-import { verifyAdmin } from "../utils/auth.js";
-import { GenrerType } from "../Types/Genrer.js";
-import { ContextInput } from "../Types/Context.js";
+import Genrer from "../../Models/Genrer.js";
+import { verifyToken } from "../../utils/Token.js";
+import { verifyAdmin } from "../../utils/auth.js";
+import { GenrerType } from "../../Types/Genrer.js";
+import { ContextInput } from "../../Types/Context.js";
 
 interface GenrerInput {
     id: string;

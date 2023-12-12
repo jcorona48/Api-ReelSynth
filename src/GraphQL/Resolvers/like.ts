@@ -1,9 +1,9 @@
-import Like from "../Models/Like.js";
-import { filter } from "../helpers/Filter.js";
-import User from "../Models/User.js";
-import { verifyToken } from "../utils/Token.js";
-import { getModel } from "../helpers/models.js";
-import { LikeType } from "../Types/Like";
+import Like from "../../Models/Like.js";
+import { filter } from "../../helpers/Filter.js";
+import User from "../../Models/User.js";
+import { verifyToken } from "../../utils/Token.js";
+import { getModel } from "../../helpers/models.js";
+import { LikeType } from "../../Types/Like.js";
 
 const updateCounter = async (like: LikeType) => {
     const { entityID, entityType, liked } = like;

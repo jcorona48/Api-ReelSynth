@@ -6,7 +6,7 @@ const SECRET_KEY = process.env.SECRET_KEY || "";
 
 export const createToken = (user: UserType) => {
     try {
-        const { id, userName, email, role } = user;
+        const { id, userName, email, role, status } = user;
         const payload = {
             id,
             userName,
@@ -14,6 +14,7 @@ export const createToken = (user: UserType) => {
             role: {
                 name: typeof role === "string" ? role : role?.name,
             },
+            status,
         };
         const token = jwt.sign(payload, SECRET_KEY, {
             expiresIn: "1d",

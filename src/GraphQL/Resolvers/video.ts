@@ -1,11 +1,11 @@
-import Video from "../Models/Video.js";
-import { filter } from "../helpers/Filter.js";
-import User from "../Models/User.js";
-import { verifyAdmin } from "../utils/auth.js";
-import { verifyToken } from "../utils/Token.js";
-import { getModel } from "../helpers/models.js";
-import Host from "../Models/Host.js";
-import { ContextInput } from "../Types/Context.js";
+import Video from "../../Models/Video.js";
+import { filter } from "../../helpers/Filter.js";
+import User from "../../Models/User.js";
+import { verifyAdmin } from "../../utils/auth.js";
+import { verifyToken } from "../../utils/Token.js";
+import { getModel } from "../../helpers/models.js";
+import Host from "../../Models/Host.js";
+import { ContextInput } from "../../Types/Context.js";
 
 interface VideoInput {
     name: string;

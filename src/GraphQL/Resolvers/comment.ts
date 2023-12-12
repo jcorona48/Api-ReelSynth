@@ -1,11 +1,11 @@
-import Comment from "../Models/Comment.js";
-import User from "../Models/User.js";
-import { filter } from "../helpers/Filter.js";
-import { verifyAdmin } from "../utils/auth.js";
-import { verifyToken } from "../utils/Token.js";
-import { getModel } from "../helpers/models.js";
-import { ContextInput } from "../Types/Context";
-import { CommentType } from "../Types/Comment";
+import Comment from "../../Models/Comment.js";
+import User from "../../Models/User.js";
+import { filter } from "../../helpers/Filter.js";
+import { verifyAdmin } from "../../utils/auth.js";
+import { verifyToken } from "../../utils/Token.js";
+import { getModel } from "../../helpers/models.js";
+import { ContextInput } from "../../Types/Context.js";
+import { CommentType } from "../../Types/Comment.js";
 
 interface CommentInput {
     id: string;

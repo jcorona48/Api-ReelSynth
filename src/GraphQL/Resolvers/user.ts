@@ -1,11 +1,11 @@
-import { filter } from "../helpers/Filter.js";
-import User, { IUser } from "../Models/User.js";
-import { createToken, verifyToken } from "../utils/Token.js";
-import { verifyAdmin } from "../utils/auth.js";
-import Role from "../Models/Role.js";
-import sendEmail from "../emailer.js";
-import { htmlWelcome } from "../Mail/index.js";
-import { UserType } from "../Types/User.js";
+import { filter } from "../../helpers/Filter.js";
+import User, { IUser } from "../../Models/User.js";
+import { createToken, verifyToken } from "../../utils/Token.js";
+import { verifyAdmin } from "../../utils/auth.js";
+import Role from "../../Models/Role.js";
+import sendEmail from "../../emailer.js";
+import { htmlWelcome } from "../../Mail/index.js";
+import { UserType } from "../../Types/User.js";
 // Querys
 const getUsers = async (_: any, { input }: { input: Object }) => {
     const query = filter(input);
@@ -69,28 +69,34 @@ const signup = async (_: any, { input }: { input: UserType }) => {
     const userFound = await User.findOne({
         $or: [{ userName: userName }, { email: email }],
     });
-    if (userFound) throw new Error("Usuario/Email ya existe");
+    if (userFound && userFound.status === "ACTIVE")
+        throw new Error("Usuario/Email ya existe");
+
+    if (userFound && userFound.status === "INACTIVE") {
+        await User.findByIdAndDelete(userFound.id);
+    }
+
     const publicRole = await Role.findOne({ name: "Public" });
     if (!publicRole) throw new Error("No se ha encontrado el rol publico");
-    const newUser = new User(input);
+    const newUser = new User({ ...input, status: "INACTIVE" });
     newUser.password = await User.encryptPassword(password);
     newUser.role = publicRole?.id;
     const user = await newUser.save();
     if (!user) throw new Error("No se ha podido crear el usuario");
 
-    const populatedUser: UserType = await user.populate("role");
+    const populatedUser: UserType = await user.populate("role country");
 
     const token = createToken(populatedUser);
 
-    const html = htmlWelcome({ userName: newUser.userName });
+    const html = htmlWelcome({ userName: newUser.userName, token });
 
     sendEmail({
         to: newUser.email,
-        subject: "Bienvenido a ReelSynth",
+        subject: "Verificacion de Cuenta - ReelSynth",
         html,
     });
 
-    return { token };
+    return populatedUser;
 };
 
 const createUser = async (

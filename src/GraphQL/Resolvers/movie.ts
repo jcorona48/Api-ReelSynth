@@ -1,23 +1,26 @@
-import Serie from "../Models/Serie.js";
-import { verifyToken } from "../utils/Token.js";
-import { verifyAdmin } from "../utils/auth.js";
-import { filter } from "../helpers/Filter.js";
-import { SerieType } from "../Types/Serie.js";
-import { ContextInput } from "../Types/Context.js";
+import Movie from "../../Models/Movie.js";
+import { verifyToken } from "../../utils/Token.js";
+import { verifyAdmin } from "../../utils/auth.js";
+import { filter } from "../../helpers/Filter.js";
 
-interface SerieInput {
+import { ContextInput } from "../../Types/Context.js";
+import { MovieType } from "../../Types/Movie.js";
+
+interface MovieInput {
     id: string;
-    input: SerieType | Object;
+    input: MovieType | Object;
     top: number;
 }
 
 // Querys
-const getSeries = async (_: any, { input }: SerieInput) => {
+const getMovies = async (_: any, { input }: MovieInput) => {
+    // controlar si se envia un titulo o un genero
     if (!input) input = {};
     const { producer, ...input2 }: any = input;
 
     const query = filter(input2);
-    const series: any = await Serie.find(query)
+
+    const movies: any = await Movie.find(query)
         .sort({ createdAt: -1 })
         .populate({
             path: "user",
@@ -34,16 +37,17 @@ const getSeries = async (_: any, { input }: SerieInput) => {
         });
 
     if (producer) {
-        return series.filter(
-            (serie: SerieType) => serie?.studio?.producer?.id == producer
+        return movies.filter(
+            (movie: MovieType) => movie.studio.producer.id == producer
         );
     }
-    return series;
+    return movies;
 };
 
-const getSerie = async (_: any, { id }: SerieInput) => {
+const getMovie = async (_: any, { id }: MovieInput) => {
     if (!id) throw new Error("No se ha enviado un ID");
-    const serie = await Serie.findById(id)
+
+    const movie = await Movie.findById(id)
         .populate({
             path: "user",
             populate: {
@@ -57,16 +61,19 @@ const getSerie = async (_: any, { id }: SerieInput) => {
                 path: "producer",
             },
         });
-    if (!serie) throw new Error("No se ha encontrado la Serie");
-    return serie;
+
+    if (!movie) throw new Error("No se ha encontrado la movie");
+    return movie;
 };
 
-const getTopSeries = async (_: any, { input, top }: SerieInput) => {
+const getTopMovies = async (_: any, { input, top }: MovieInput) => {
+    // controlar si se envia un titulo o un genero
     if (!input) input = {};
     const { producer, ...input2 }: any = input;
 
     const query = filter(input2);
-    const series: any = await Serie.find(query)
+
+    const movies: any = await Movie.find({ ...query })
         .sort({ rating: -1, likeCount: -1 })
         .limit(top)
         .populate({
@@ -84,27 +91,26 @@ const getTopSeries = async (_: any, { input, top }: SerieInput) => {
         });
 
     if (producer) {
-        return series.filter(
-            (serie: SerieType) => serie.studio.producer.id == producer
+        return movies.filter(
+            (movie: MovieType) => movie.studio.producer.id == producer
         );
     }
-    return series;
+    return movies;
 };
 
 // Mutations
-const createSerie = async (
+const createMovie = async (
     _: any,
-    { input }: SerieInput,
+    { input }: MovieInput,
     { token }: ContextInput
 ) => {
     try {
         const userToken = verifyToken(token);
         if (typeof userToken === "string") throw new Error(userToken);
         verifyAdmin(userToken);
-        const newSerie = new Serie({ ...input, user: userToken.id });
-        await newSerie.save();
-
-        const serie = await Serie.findById(newSerie.id)
+        const newMovie = new Movie({ ...input, user: userToken.id });
+        await newMovie.save();
+        const movie = await Movie.findById(newMovie.id)
             .populate({
                 path: "user",
                 populate: {
@@ -119,16 +125,16 @@ const createSerie = async (
                 },
             });
 
-        return serie;
+        return movie;
     } catch (error) {
         console.log(error);
-        throw new Error("Error al crear la Serie: " + error);
+        throw new Error("Error al crear la Movie: " + error);
     }
 };
 
-const updateSerie = async (
+const updateMovie = async (
     _: any,
-    { id, input }: SerieInput,
+    { id, input }: MovieInput,
     { token }: ContextInput
 ) => {
     try {
@@ -137,26 +143,27 @@ const updateSerie = async (
         if (typeof userToken === "string") throw new Error(userToken);
         verifyAdmin(userToken);
         if (!id) throw new Error("No se ha enviado un ID");
-        const serie = await Serie.findByIdAndUpdate(id, input, { new: true })
+        console.log(id, input);
+        const movie = await Movie.findByIdAndUpdate(id, input, { new: true })
             .populate({ path: "user", populate: { path: "role country" } })
             .populate("genrers")
             .populate({ path: "studio", populate: { path: "producer" } });
-        if (!serie) throw new Error("No se ha encontrado la Serie");
-        return serie;
+        if (!movie) throw new Error("No se ha encontrado la Movie");
+        return movie;
     } catch (error) {
         console.log(error);
-        throw new Error("Error al actualizar la Serie: " + error);
+        throw new Error("Error al actualizar la Movie: " + error);
     }
 };
 
-export const serieResolvers = {
+export const movieResolvers = {
     Query: {
-        getSeries,
-        getSerie,
-        getTopSeries,
+        getMovies,
+        getMovie,
+        getTopMovies,
     },
     Mutation: {
-        createSerie,
-        updateSerie,
+        createMovie,
+        updateMovie,
     },
 };

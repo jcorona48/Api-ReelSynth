@@ -1,9 +1,9 @@
-import Company from "../Models/Company.js";
-import { verifyToken } from "../utils/Token.js";
-import { verifyAdmin } from "../utils/auth.js";
-import { filter } from "../helpers/Filter.js";
+import Company from "../../Models/Company.js";
+import { verifyToken } from "../../utils/Token.js";
+import { verifyAdmin } from "../../utils/auth.js";
+import { filter } from "../../helpers/Filter.js";
 
-import { ContextInput } from "../Types/Context";
+import { ContextInput } from "../../Types/Context.js";
 
 interface Company {
     name: string;

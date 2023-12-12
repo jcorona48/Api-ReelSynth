@@ -1,10 +1,10 @@
-import Rate from "../Models/Rate.js";
-import { filter } from "../helpers/Filter.js";
-import User from "../Models/User.js";
-import { verifyToken } from "../utils/Token.js";
-import { getModel } from "../helpers/models.js";
-import { RateType } from "../Types/Rate.js";
-import { ContextInput } from "../Types/Context.js";
+import Rate from "../../Models/Rate.js";
+import { filter } from "../../helpers/Filter.js";
+import User from "../../Models/User.js";
+import { verifyToken } from "../../utils/Token.js";
+import { getModel } from "../../helpers/models.js";
+import { RateType } from "../../Types/Rate.js";
+import { ContextInput } from "../../Types/Context.js";
 
 interface RateInput {
     id: string;
